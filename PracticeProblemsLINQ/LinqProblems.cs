@@ -104,15 +104,6 @@ namespace PracticeProblemsLINQ
             getCustomer.FirstName = "Rob";
             getCustomer.LastName = "Prell";
 
-            //foreach (var item in customers)
-            //{
-            //    if (item.Id == 3)
-            //    {
-            //        item.FirstName = "Rob";
-            //        item.LastName = "Prell";
-            //    }
-            //}
-
             foreach (var item in customers)
             {
                 Console.WriteLine($"{item.FirstName} {item.LastName} customer id {item.Id}");
@@ -132,26 +123,26 @@ namespace PracticeProblemsLINQ
         //Expected output: 86.125
         public static double RunProblem5(List<string> classGrades)
         {
-            double average=0.0;
-            var gradeList = classGrades.Select(i => Double.Parse(i)).ToHashSet();
-
-            foreach (var item in gradeList)
+            double average;
+            List<double> avgs = new List<double>();
+            foreach (var item in classGrades)
             {
-                Console.WriteLine(item);
+                var num = item.Split(',').ToList();
+                var gradesList = num.Select(n => Double.Parse(n)).ToList();
+                gradesList.Remove(gradesList.Min());
+                avgs.Add(gradesList.Average());
+                Console.WriteLine(gradesList.Average());
             }
-      
-            //foreach (var item in gradeList)
-            //{
-            //    gradeList.Remove(gradeList.Max());
-                
-            //}
-            //foreach (var item in gradeList)
-            //{
-            //   average = gradeList.Average();
-            //}
-            //code
-            //
+            average = avgs.Average();
+            Console.WriteLine(average);
 
+            //List<double> avgsii = new List<double>();
+            //var getNumbers = classGrades.Select(gr => gr.Split(',').ToList());
+
+            //var numAvg = getNumbers.Select(i => i.Select(z => Double.Parse(z)).ToList()).ToList();
+            //numAvg.Remove(numAvg.Min());
+            //avgsii.Add(numAvg.Average());
+            
             return average;
 
         }
