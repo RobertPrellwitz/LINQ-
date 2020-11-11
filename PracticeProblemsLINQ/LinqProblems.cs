@@ -66,7 +66,7 @@ namespace PracticeProblemsLINQ
         //Using LINQ, write a method that takes in a list of customers and returns the lone customer who has the name of Mike.
         public static Customer RunProblem3(List<Customer> customers)
         {
-            //   code Alternate
+            //code Alternate
            // var match =
            //from customer in customers
            //where customer.FirstName == "Mike"
@@ -91,19 +91,27 @@ namespace PracticeProblemsLINQ
         //Then, update that customer's first name and last name to completely different names and return the newly updated customer from the method.
         public static Customer RunProblem4(List<Customer> customers)
         {
-            
+            foreach (var item in customers)
+            {
+                Console.WriteLine($"{item.FirstName} {item.LastName} customer id {item.Id}");
+            }
+
+
             //code
             var getCustomer = customers.Where(c => c.Id == 3).First();
             Console.WriteLine($"{getCustomer.FirstName} {getCustomer.LastName} Customer id {getCustomer.Id}");
 
-            foreach (var item in customers)
-            {
-                if (item.Id == 3)
-                {
-                    item.FirstName = "Rob";
-                    item.LastName = "Prell";
-                }
-            }
+            getCustomer.FirstName = "Rob";
+            getCustomer.LastName = "Prell";
+
+            //foreach (var item in customers)
+            //{
+            //    if (item.Id == 3)
+            //    {
+            //        item.FirstName = "Rob";
+            //        item.LastName = "Prell";
+            //    }
+            //}
 
             foreach (var item in customers)
             {
@@ -122,13 +130,31 @@ namespace PracticeProblemsLINQ
         //The method should take in a list of strings of grades (e.g., one string might be "90,100,82,89,55"), 
         //drops the lowest grade from each string, averages the rest of the grades from that string, then averages the averages.
         //Expected output: 86.125
-        //public static double RunProblem5(List<string> classGrades)
-        //{
-        //    //code
+        public static double RunProblem5(List<string> classGrades)
+        {
+            double average=0.0;
+            var gradeList = classGrades.Select(i => Double.Parse(i)).ToHashSet();
 
-        //    //return
+            foreach (var item in gradeList)
+            {
+                Console.WriteLine(item);
+            }
+      
+            //foreach (var item in gradeList)
+            //{
+            //    gradeList.Remove(gradeList.Max());
+                
+            //}
+            //foreach (var item in gradeList)
+            //{
+            //   average = gradeList.Average();
+            //}
+            //code
+            //
 
-        //}
+            return average;
+
+        }
         #endregion
 
         #region Bonus Problem 1
